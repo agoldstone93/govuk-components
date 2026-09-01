@@ -1,0 +1,44 @@
+---
+title: Language navigation
+---
+
+markdown:
+  The Language navigation component helps users choose and switch between
+  languages when using a service.
+
+== render('/partials/example.*',
+  caption: "Basic language navigation",
+  code: language_navigation_basic,
+  data: language_navigation_basic_data) do
+
+  markdown:
+    The easiest way to render the language navigation component is to pass in an array of hashes.
+
+    The item with `current: true` will be rendered in a `<span>` and the rest as links.
+
+== render('/partials/example.*',
+  caption: "Language navigation when at least one of the scripts flows from right to left",
+  code: language_navigation_rtl,
+  data: language_navigation_rtl_data) do
+
+  markdown:
+    When one of the language uses script that flows from right to left, mark it
+    with `dir: 'rtl'`. If any `rtl` items are present, items without a `dir` will default to `ltr`.
+
+== render('/partials/example.*',
+  caption: "Manually building the language navigation",
+  code: language_navigation_manual) do
+
+  markdown:
+    For total control of the rendering you can render the items one at a time using slots.
+
+== render('/partials/example.*',
+  caption: "Inverted language navigation",
+  code: language_navigation_inverse,
+  data: language_navigation_basic_data,
+  inverse: true) do
+
+  markdown:
+    Use `inverse: true` to invert the text colour when rendering on a dark background.
+
+== render('/partials/related-navigation.*', links: language_navigation_info)
