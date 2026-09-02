@@ -17,6 +17,12 @@ module Helpers
       }
     end
 
+    def language_navigation_info
+      {
+        "GOV.UK Design System language navigation documentation" => "https://design-system.service.gov.uk/components/language-navigation/"
+      }
+    end
+
     def back_link_info
       {
         "GOV.UK Design System back link documentation" => "https://design-system.service.gov.uk/components/back-link/"

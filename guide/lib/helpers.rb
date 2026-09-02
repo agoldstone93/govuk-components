@@ -59,6 +59,7 @@ require 'components/govuk_component/footer_component'
 require 'components/govuk_component/generic_header_component'
 require 'components/govuk_component/header_component'
 require 'components/govuk_component/inset_text_component'
+require 'components/govuk_component/language_navigation_component'
 require 'components/govuk_component/notification_banner_component'
 require 'components/govuk_component/pagination_component'
 require 'components/govuk_component/pagination_component/item'
@@ -112,6 +113,7 @@ use_helper Examples::FooterHelpers
 use_helper Examples::GenericHeaderHelpers
 use_helper Examples::HeaderHelpers
 use_helper Examples::InsetTextHelpers
+use_helper Examples::LanguageNavigationHelpers
 use_helper Examples::NotificationBannerHelpers
 use_helper Examples::PaginationHelpers
 use_helper Examples::PanelHelpers

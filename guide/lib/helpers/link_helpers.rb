@@ -37,6 +37,7 @@ module Helpers
           "GOV.UK footer" => "/components/footer/",
           "GOV.UK header" => "/components/header/",
           "Inset text" => "/components/inset-text/",
+          "Language navigation" => "/components/language-navigation/",
           "Notification banner" => "/components/notification-banner/",
           "Pagination" => "/components/pagination/",
           "Panel" => "/components/panel/",

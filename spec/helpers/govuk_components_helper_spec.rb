@@ -88,6 +88,13 @@ RSpec.describe(GovukComponentsHelper, type: 'helper') do
       css_matcher: %(.govuk-inset-text)
     },
     {
+      helper_method: :govuk_language_navigation,
+      klass: GovukComponent::LanguageNavigationComponent,
+      args: [],
+      kwargs: { items: [{ text: 'English', lang: 'en', href: '/en' }] },
+      css_matcher: %(.govuk-language-navigation)
+    },
+    {
       helper_method: :govuk_cookie_banner,
       klass: GovukComponent::CookieBannerComponent,
       args: [],

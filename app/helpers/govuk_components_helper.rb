@@ -11,6 +11,7 @@ module GovukComponentsHelper
     govuk_generic_header: 'GovukComponent::GenericHeaderComponent',
     govuk_header: 'GovukComponent::HeaderComponent',
     govuk_inset_text: 'GovukComponent::InsetTextComponent',
+    govuk_language_navigation: 'GovukComponent::LanguageNavigationComponent',
     govuk_notification_banner: 'GovukComponent::NotificationBannerComponent',
     govuk_pagination: 'GovukComponent::PaginationComponent',
     govuk_panel: 'GovukComponent::PanelComponent',
