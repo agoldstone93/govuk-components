@@ -68,18 +68,51 @@ module Examples
       DATA
     end
 
-    def service_navigation_manual
+    def service_navigation_manual_start_end_nav
       <<~SNIPPET
-        = govuk_service_navigation(navigation_id: 'example-5', classes: 'app-service-navigation') do |sn|
-          = sn.with_start_slot { '🌅' }
-          = sn.with_service_name(service_name: 'A really great service', service_url: '#')
-          = sn.with_navigation_item(text: "Footer", href: "/components/footer")
-          = sn.with_navigation_item(text: "Header", href: "/components/header")
-          = sn.with_navigation_item(text: "Panel", href: "/components/panel")
-          = sn.with_navigation_item(text: "Table", href: "/components/table")
-          = sn.with_navigation_item(text: "Tag", href: "/components/tag", active: true)
-          = sn.with_end_slot { '🌆' }
+        = govuk_service_navigation(navigation_id: 'example-5') do |sn|
+          - sn.with_navigation_start { tag.li('🌅', class: 'govuk-service-navigation__item') }
+          - sn.with_service_name(service_name: 'A really great service', service_url: '#')
+          - sn.with_navigation_item(text: "Footer", href: "/components/footer")
+          - sn.with_navigation_item(text: "Header", href: "/components/header")
+          - sn.with_navigation_item(text: "Panel", href: "/components/panel")
+          - sn.with_navigation_item(text: "Table", href: "/components/table")
+          - sn.with_navigation_item(text: "Tag", href: "/components/tag", active: true)
+          - sn.with_navigation_end { tag.li('🌆', class: 'govuk-service-navigation__item') }
       SNIPPET
+    end
+
+    def service_navigation_manual_content_above_below
+      <<~SNIPPET
+        = govuk_service_navigation(navigation_id: 'example-6') do |sn|
+          - sn.with_content_before { tag.p('Content above') }
+          - sn.with_service_name(service_name: 'A really great service', service_url: '#')
+          - sn.with_navigation_item(text: "Footer", href: "/components/footer")
+          - sn.with_navigation_item(text: "Header", href: "/components/header")
+          - sn.with_content_after { tag.p('Content below') }
+      SNIPPET
+    end
+
+    def service_navigation_manual_content_inline
+      <<~SNIPPET
+        = govuk_service_navigation(navigation_id: 'example-7', inline: true) do |sn|
+          - sn.with_service_name(service_name: 'A really great service', service_url: '#')
+          - sn.with_navigation_item(text: "Footer", href: "/components/footer")
+          - sn.with_navigation_item(text: "Header", href: "/components/header")
+          - sn.with_content_after { govuk_language_navigation(items:) }
+      SNIPPET
+    end
+
+    def service_navigation_manual_content_inline_data
+      <<~DATA
+        {
+          items: [
+            { text: 'English', lang: 'en', href: '#/en', current: true },
+            { text: "Українська", lang: "uk", href: "#/uk" },
+            { text: "Polski", lang: "pl", href: "#/pl" }
+          ]
+        }
+      DATA
     end
 
     def service_navigation_with_inverted_colours

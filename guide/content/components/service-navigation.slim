@@ -54,21 +54,38 @@ markdown:
     can be used instead.
 
 == render('/partials/example.*',
-  caption: "Manually building the service navigation",
-  code: service_navigation_manual) do
-
-  markdown:
-    For extra customisation the service navigation can be assembled manually. We can
-    use the `start_slot` and `end_slot` to add custom HTML at the beginning and
-    end of the service navigation. This content needs its own custom styling or it will
-    be rendered above and below the other content.
-
-== render('/partials/example.*',
   caption: "Inverting the service navigation colour",
   code: service_navigation_with_inverted_colours,
   data: service_navigation_with_navigation_items_data) do
 
   markdown:
     Use `inverse: true` to render the service navigation component with white links on a blue background.
+
+== render('/partials/example.*',
+  caption: "Adding items to the start and end of the navigation",
+  code: service_navigation_manual_start_end_nav) do
+
+  markdown:
+    For extra customisation the service navigation can be assembled manually. We can
+    use the `navigation_start` and `navigation_end` to add custom HTML at the beginning and
+    end of the service navigation.
+
+== render('/partials/example.*',
+  caption: "Adding content above and below the service navigation",
+  code: service_navigation_manual_content_above_below) do
+
+  markdown:
+    To add extra content above and below the service navigation use the `content_before`
+    and `content_after` slots. This HTML will be unstyled, you must provide your own styles
+    and JavaScript for the custom HTML.
+
+== render('/partials/example.*',
+  caption: "Placing items on the right of the service navigation",
+  code: service_navigation_manual_content_inline,
+  data: service_navigation_manual_content_inline_data) do
+
+  markdown:
+    If there's enough space, you can render the `content_after` block on the
+    right of the navigation by passing `inline: true`.
 
 == render('/partials/related-navigation.*', links: service_navigation_info)

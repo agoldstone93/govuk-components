@@ -348,6 +348,76 @@ RSpec.describe(GovukComponent::ServiceNavigationComponent, type: :component) do
       end
     end
   end
+
+  context 'when navigation_start and navigation_end slots are present' do
+    let(:start_content) { 'AAA' }
+    let(:end_content) { 'ZZZ' }
+
+    subject! do
+      render_inline(GovukComponent::ServiceNavigationComponent.new) do |sn|
+        sn.with_service_name(service_name: 'A nice service')
+        sn.with_navigation_start { start_content }
+        sn.with_navigation_item(text: 'Page 1', href: '/page-1')
+        sn.with_navigation_end { end_content }
+      end
+    end
+
+    specify "places start content before navigation items" do
+      expect(rendered_content).to have_tag("nav", text: /#{start_content}Page 1/)
+    end
+
+    specify "places end content after navigation items" do
+      expect(rendered_content).to have_tag("nav", text: /Page 1#{end_content}/)
+    end
+  end
+
+  context 'when before_navigation slot is present' do
+    let(:content_before_text) { 'BBB' }
+
+    subject! do
+      render_inline(GovukComponent::ServiceNavigationComponent.new) do |sn|
+        sn.with_service_name(service_name: 'A nice service')
+        sn.with_navigation_item(text: 'Page 1', href: '/page-1')
+        sn.with_content_before { %(<em>#{content_before_text}</em>).html_safe }
+      end
+    end
+
+    specify 'places content before the service nav container' do
+      selector = 'section.govuk-service-navigation > div.govuk-width-container'
+
+      expect(html.css(selector).children.map(&:name)).to eql(%w(em div))
+    end
+
+    specify 'renders the content_before' do
+      expect(rendered_content).to have_tag('section', with: { class: 'govuk-service-navigation' }) do
+        with_tag('em', text: content_before_text)
+      end
+    end
+  end
+
+  context 'when after_navigation slot is present' do
+    let(:content_after_text) { 'YYY' }
+
+    subject! do
+      render_inline(GovukComponent::ServiceNavigationComponent.new) do |sn|
+        sn.with_service_name(service_name: 'A nice service')
+        sn.with_navigation_item(text: 'Page 1', href: '/page-1')
+        sn.with_content_after { %(<strong>#{content_after_text}</strong>).html_safe }
+      end
+    end
+
+    specify 'places content after the service nav container' do
+      selector = 'section.govuk-service-navigation > div.govuk-width-container'
+
+      expect(html.css(selector).children.map(&:name)).to eql(%w(div strong))
+    end
+
+    specify 'renders the content_after' do
+      expect(rendered_content).to have_tag('section', with: { class: 'govuk-service-navigation' }) do
+        with_tag('strong', text: content_after_text)
+      end
+    end
+  end
 end
 
 RSpec.describe(GovukComponent::ServiceNavigationComponent::ServiceNameComponent, type: :component) do
