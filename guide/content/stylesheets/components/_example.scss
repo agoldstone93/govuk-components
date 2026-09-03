@@ -8,6 +8,11 @@
   @include govuk-responsive-margin(6, "top");
   @include govuk-responsive-margin(6, "bottom");
 
+  --govuk-brand-colour: #{govuk-colour("blue")};
+  --govuk-link-colour: #{govuk-colour("blue", $variant: "shade-10")};
+  --govuk-link-hover-colour: #{govuk-colour("blue", $variant: "shade-50")};
+  --govuk-link-visited-colour: #{govuk-colour("purple")};
+
   .govuk-tabs__panel {
     > *:last-child {
       margin-bottom: govuk-spacing(-2);
